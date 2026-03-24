@@ -1,6 +1,6 @@
 # Hi, I'm Mariem 👋
 
-**Cloud & DevOps Engineer in training 
+**Cloud & DevOps Engineer in training**
 
 ![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white)
 ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
