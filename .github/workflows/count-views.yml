@@ -1,0 +1,34 @@
+name: Count Profile Views
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  update-count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout private stats repo
+        uses: actions/checkout@v3
+        with:
+          repository: mariem-jls/profile-stats
+          token: ${{ secrets.STATS_TOKEN }}
+          path: stats
+
+      - name: Increment counter
+        run: |
+          cd stats
+          count=$(cat count.txt)
+          echo $((count + 1)) > count.txt
+          echo "👁️ Total views: $((count + 1))"
+
+      - name: Push updated count
+        run: |
+          cd stats
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add count.txt
+          git commit -m "Update view count"
+          git push
